@@ -1,210 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Dev Nguyen - Fullstack Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; 
+            color: #475569; /* slate-600 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
             padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            border: 1px solid #e2e8f0;
         }
-        
-        img {
-            width: 40%;
-            height: auto;
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e293b; /* slate-800 */
+            display: flex;
+            align-items: center;
         }
-
-        h6, p {
-            color: #000;
+        .section-title i {
+            margin-right: 0.75rem;
+            color: #0ea5e9; /* sky-500 */
         }
-
-        
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            box-shadow: 0 4px 14px 0 rgb(0 119 255 / 39%);
+        }
+        .btn-primary:hover {
+            background-color: #0284c7; /* sky-600 */
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: #f1f5f9; /* slate-100 */
+            color: #334155; /* slate-700 */
+            border: 1px solid #e2e8f0; /* slate-200 */
+        }
+        .btn-secondary:hover {
+            background-color: #e2e8f0; /* slate-200 */
+        }
+        .project-item {
+            background: #f8fafc; /* slate-50 */
+            border: 1px solid #e2e8f0; /* slate-200 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .tech-badge {
+            display: inline-block;
+            background-color: #e0f2fe; /* sky-100 */
+            color: #0369a1; /* sky-700 */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(240, 242, 245, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
-<body>
-        <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">User</a></li>
-          <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-        </ol>
-      </nav>
-    
-    <div class="row gutter-sm test">
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card card-body">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <img src="me.png" class="rounded mx-auto d-block" alt="...">
-                        <div class="mt-3">
-                            <h5 class="text-center">Nguyen Minh Tuong</h5>
-                            <p class="text-center">Tp. Ho Chi Minh</p>
-                            <button type="button" class="btn btn-primary align-content-center">Follow</button>
-                            <button type="button" class="btn btn-outline-primary">Message</button>
-                        </div>
-                    </div>
-                </div>
+<body class="antialiased">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8 sticky-header" data-aos="fade-down">
+            <a href="#" class="text-3xl font-extrabold text-slate-900 tracking-tight">Dev Nguyen.</a>
+            <div class="flex items-center space-x-4">
+                <button id="contact-btn-header" data-lang-vi="Liên hệ" data-lang-en="Contact me" class="btn btn-primary">Liên hệ</button>
+                <button id="lang-switcher" class="text-slate-500 hover:text-sky-500 transition-colors">
+                    <i class="fas fa-language text-2xl"></i>
+                </button>
             </div>
+        </header>
 
-            <div class="card mt-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <i class="bi bi-facebook"></i>
-                        </div>
-                        <div class="col-sm-5">
-                            <a href="">Facebook</a>
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <i class="bi bi-twitter-x"></i>
-                        </div>
-                        <div class="col-sm-5">
-                            <a href="">Twitter</a>
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <i class="bi bi-instagram"></i>
-                        </div>
-                        <div class="col-sm-5">
-                            <a href="">Instagram</a>
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <i class="bi bi-linkedin"></i>
-                        </div>
-                        <div class="col-sm-5">
-                            <a href="">Linkedin</a>
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <i class="bi bi-github"></i>
-                        </div>
-                        <div class="col-sm-5">
-                            <a href="">Github</a>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h4>Full name</h4>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            Nguyen Minh Tuong
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <h4>Email</h4>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            nguyenminhtuong19102003@gmail.com
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <h4>Phone</h4>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            0329407627
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <h4>Address</h4>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            Phu Xuan, Nha Be
-                        </div>
-                    </div> <hr>
-                    <div class="row">
-                        <div class="col">
-                            <h4>Major</h4>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                            Software Engineering
-                        </div>
-                    </div> <hr>
-
-                    <div class="row">
-                        <div class="col-sm-11">
-                            <button type="button" class="btn btn-info">Edit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                    <div class="card h-100 mt-3">
-                        <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3">HTML</h6>
-                            <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-warning text-dark" style="width: 85%"></div>
-                            </div> <hr>
-                            <h6 class="d-flex align-items-center mb-3">CSS</h6>
-                            <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-info" style="width: 70%"></div>
-                            </div>
-                            <hr>
-                            <h6 class="d-flex align-items-center mb-3">JavaScript</h6>
-                            <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-warning text-dark" style="width: 65%"></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div class="col-sm-6 mb-3">
-                    <div class="card h-100 mt-3">
-                        <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3">Web Resposive</h6>
-                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar w-75"></div>
-                              </div> <hr>
-                            <h6 class="d-flex align-items-center mb-3">React</h6>
-                            <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-info" style="width: 50%"></div>
-
-                            </div>
-                            <hr>
-                            <h6 class="d-flex align-items-center mb-3">Landing Page</h6>
-                            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-success" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+        <!-- Main Layout Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             
-        </div>
+            <!-- Left Column -->
+            <div class="lg:col-span-1 space-y-8">
+                <div class="card text-center flex flex-col justify-center items-center" data-aos="fade-up">
+                    <img src="image/me.jpg" alt="Nguyen Minh Tuong" class="w-48 h-72 rounded-xl mx-auto mb-4 shadow-md object-cover">
+                    <h1 id="profile-name" class="text-2xl font-bold text-slate-900">Nguyễn Minh Tường</h1>
+                    <p class="text-slate-500 mb-6" data-lang-vi="Lập trình viên Fullstack" data-lang-en="Fullstack Developer">Lập trình viên Fullstack</p>
+                    <div class="flex space-x-4">
+                        <button id="contact-btn-profile" class="btn btn-primary" data-lang-vi="Liên hệ" data-lang-en="Contact">Liên hệ</button>
+                        <a href="NguyenMinhTuong_CV.pdf" download class="btn btn-secondary" data-lang-vi="Tải CV" data-lang-en="Download CV">Tải CV</a>
+                    </div>
+                </div>
 
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-title"><i class="fas fa-user-circle"></i><span data-lang-vi="Thông tin cá nhân" data-lang-en="Personal Information">Thông tin cá nhân</span></h2>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex justify-between items-center"><span class="font-semibold" data-lang-vi="Họ và tên" data-lang-en="Full Name">Họ và tên</span><span>Nguyễn Minh Tường</span></li>
+                        <li class="flex justify-between items-center"><span>Email</span><span>devnguyen1910@gmail.com</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold" data-lang-vi="Điện thoại" data-lang-en="Phone">Điện thoại</span><span>(+84) 329 407 627</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold" data-lang-vi="Địa chỉ" data-lang-en="Address">Địa chỉ</span><span>Nha Be, HCMC</span></li>
+                        <li class="flex justify-between items-center"><span class="font-semibold" data-lang-vi="Chuyên ngành" data-lang-en="Major">Chuyên ngành</span><span data-lang-vi="Kỹ thuật Phần mềm" data-lang-en="Software Engineering">Kỹ thuật Phần mềm</span></li>
+                    </ul>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title"><i class="fas fa-share-alt"></i><span data-lang-vi="Mạng xã hội" data-lang-en="Social Media">Mạng xã hội</span></h2>
+                     <ul class="space-y-4">
+                        <li class="flex justify-between items-center"><span class="flex items-center"><i class="fab fa-facebook w-6 text-xl mr-2 text-blue-600"></i>Facebook</span><a href="https://www.facebook.com/gin19th10" target="_blank" class="text-sky-600 hover:underline">gin19th10</a></li>
+                        <li class="flex justify-between items-center"><span class="flex items-center"><i class="fab fa-instagram w-6 text-xl mr-2 text-pink-500"></i>Instagram</span><a href="https://www.instagram.com/gin19th10" target="_blank" class="text-sky-600 hover:underline">gin19th10</a></li>
+                        <li class="flex justify-between items-center"><span class="flex items-center"><i class="fab fa-linkedin w-6 text-xl mr-2 text-blue-700"></i>LinkedIn</span><a href="https://www.linkedin.com/in/devnguyen1910" target="_blank" class="text-sky-600 hover:underline">devnguyen1910</a></li>
+                        <li class="flex justify-between items-center"><span class="flex items-center"><i class="fab fa-github w-6 text-xl mr-2 text-gray-800"></i>Github</span><a href="https://github.com/devnguyen1910" target="_blank" class="text-sky-600 hover:underline">devnguyen1910</a></li>
+                    </ul>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                     <h2 class="section-title"><i class="fas fa-university"></i><span data-lang-vi="Học vấn" data-lang-en="Education">Học vấn</span></h2>
+                     <img src="image/VienNIIE.png" alt="VienNIIE" class="w-full h-auto rounded-lg mb-4">
+                     <ul class="space-y-2">
+                        <li class="flex justify-between"><span class="font-semibold" data-lang-vi="Trường" data-lang-en="University">Trường</span><span class="text-right">NGUYEN TAT THANH UNIVERSITY</span></li>
+                        <li class="flex justify-between"><span class="font-semibold" data-lang-vi="Chương trình" data-lang-en="Program">Chương trình</span><span class="text-right">NIIE</span></li>
+                        <li class="flex justify-between"><span class="font-semibold" data-lang-vi="Bằng cấp" data-lang-en="Degree">Bằng cấp</span><span data-lang-vi="Cử nhân Kỹ thuật Phần mềm" data-lang-en="B.Sc. Software Engineering" class="text-right">Cử nhân Kỹ thuật Phần mềm</span></li>
+                        <li class="flex justify-between"><span class="font-semibold" data-lang-vi="Thời gian" data-lang-en="Period">Thời gian</span><span class="text-right">09/2021 - 11/2025</span></li>
+                        <li class="flex justify-between"><span>GPA</span><span class="text-right">3.31 / 4.0</span></li>
+                     </ul>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                     <h2 class="section-title"><i class="fas fa-award"></i><span data-lang-vi="Chứng chỉ & Giải thưởng" data-lang-en="Certificates & Prizes">Chứng chỉ & Giải thưởng</span></h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg" data-lang-vi="Chứng chỉ" data-lang-en="Certificates">Chứng chỉ</h3>
+                            <ul class="list-disc list-inside text-slate-600">
+                                <li>Microsoft Office Specialist: Word, Excel, PowerPoint</li>
+                                <li data-lang-vi="Chứng chỉ Tiếng Anh B2 của NIIE (Tương đương IELTS 6.0)" data-lang-en="NIIE Certificate: B2 English (Equivalent to IELTS 6.0)">Chứng chỉ Tiếng Anh B2 của NIIE (Tương đương IELTS 6.0)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg" data-lang-vi="Giải thưởng" data-lang-en="Prize">Giải thưởng</h3>
+                            <ul class="list-disc list-inside text-slate-600">
+                                <li data-lang-vi="Giải ba cuộc thi 'Daily life' của CLB Tiếng Anh NIIE" data-lang-en="3rd prize in the 'Daily Life' contest of NIIE English Club">Giải ba cuộc thi "Daily life" của CLB Tiếng Anh NIIE</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="card" data-aos="fade-up">
+                    <h2 class="section-title"><i class="fas fa-bullseye"></i><span data-lang-vi="Mục tiêu nghề nghiệp" data-lang-en="Career Objective">Mục tiêu nghề nghiệp</span></h2>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800 mb-2" data-lang-vi="Ngắn hạn" data-lang-en="Short-term">Ngắn hạn</h3>
+                        <p class="text-slate-600 mb-4" data-lang-vi="Áp dụng kiến thức chuyên môn về .NET và ReactJS vào vị trí Lập trình viên Fullstack để tham gia phát triển sản phẩm thực tế. Mục tiêu là nhanh chóng học hỏi quy trình làm việc chuyên nghiệp, đóng góp hiệu quả vào dự án và nâng cao kỹ năng lập trình." data-lang-en="To apply my expertise in .NET and ReactJS as a Fullstack Developer, contributing to real-world product development. My objective is to rapidly adapt to professional workflows, make meaningful contributions, and continuously enhance my coding skills.">Áp dụng kiến thức chuyên môn về .NET và ReactJS vào vị trí Lập trình viên Fullstack để tham gia phát triển sản phẩm thực tế. Mục tiêu là nhanh chóng học hỏi quy trình làm việc chuyên nghiệp, đóng góp hiệu quả vào dự án và nâng cao kỹ năng lập trình.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800 mb-2" data-lang-vi="Dài hạn" data-lang-en="Long-term">Dài hạn</h3>
+                        <p class="text-slate-600" data-lang-vi="Trở thành một Kỹ sư Phần mềm chuyên sâu trong hệ sinh thái .NET, có khả năng thiết kế và xây dựng các hệ thống phức tạp, hiệu năng cao trên nền tảng đám mây (Azure, AWS). Hướng tới việc tạo ra các giải pháp công nghệ mang lại giá trị lớn cho doanh nghiệp và chia sẻ kinh nghiệm cho thế hệ sau." data-lang-en="To become a specialized Software Engineer within the .NET ecosystem, adept at designing and building complex, high-performance systems on cloud platforms (Azure, AWS). I aspire to create technology solutions that deliver significant business value and to mentor the next generation of developers.">Trở thành một Kỹ sư Phần mềm chuyên sâu trong hệ sinh thái .NET, có khả năng thiết kế và xây dựng các hệ thống phức tạp, hiệu năng cao trên nền tảng đám mây (Azure, AWS). Hướng tới việc tạo ra các giải pháp công nghệ mang lại giá trị lớn cho doanh nghiệp và chia sẻ kinh nghiệm cho thế hệ sau.</p>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i><span data-lang-vi="Kinh nghiệm làm việc" data-lang-en="Experience">Kinh nghiệm làm việc</span></h2>
+                    <div class="flex items-center">
+                        <div class="w-24 h-24 flex-shrink-0">
+                            <img src="image/dce.png" alt="DIGCOMP EDU Logo" class="rounded-lg w-full h-full object-contain">
+                        </div>
+                        <div class="pl-6">
+                            <h3 class="font-bold text-lg text-slate-800">Web System Operation Specialist</h3>
+                            <p class="font-semibold text-sky-600">DIGCOMP EDU</p>
+                            <p class="text-sm text-slate-500 mb-2">Feb 2025 – May 2025 | Ho Chi Minh City, Vietnam</p>
+                            <ul class="list-disc list-inside text-slate-600 text-sm space-y-1">
+                                <li data-lang-vi="Quản trị và tối ưu hóa các hệ thống web (WordPress, ASP.NET Core)." data-lang-en="Administered and optimized web systems (WordPress, ASP.NET Core).">Quản trị và tối ưu hóa các hệ thống web (WordPress, ASP.NET Core).</li>
+                                <li data-lang-vi="Đóng góp vào toàn bộ vòng đời phát triển tính năng." data-lang-en="Contributed to the full feature development lifecycle.">Đóng góp vào toàn bộ vòng đời phát triển tính năng.</li>
+                                <li data-lang-vi="Hợp tác trong môi trường Agile để nâng cao các tính năng sản phẩm." data-lang-en="Collaborated in an Agile environment to enhance product features.">Hợp tác trong môi trường Agile để nâng cao các tính năng sản phẩm.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title"><i class="fas fa-cogs"></i><span data-lang-vi="Kỹ năng chuyên môn" data-lang-en="Technical Skills">Kỹ năng chuyên môn</span></h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                        <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-code mr-2 text-teal-500"></i><span data-lang-vi="Ngôn ngữ" data-lang-en="Languages">Ngôn ngữ</span></h3>
+                            <p class="text-slate-600">C#, ReactJS, HTML, CSS, JavaScript</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-cubes mr-2 text-teal-500"></i>Frameworks & Libraries</h3>
+                            <p class="text-slate-600">ASP.NET MVC/Core, WinForms, Telerik UI, DevExpress</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-database mr-2 text-teal-500"></i><span data-lang-vi="Cơ sở dữ liệu" data-lang-en="Databases">Cơ sở dữ liệu</span></h3>
+                            <p class="text-slate-600">MS SQL Server, MySQL</p>
+                        </div>
+                         <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-cloud mr-2 text-teal-500"></i>Cloud & DevOps</h3>
+                            <p class="text-slate-600">Azure, AWS, Docker, Git, GitHub, CI/CD</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-sitemap mr-2 text-teal-500"></i><span data-lang-vi="Kiến trúc" data-lang-en="Architectures">Kiến trúc</span></h3>
+                            <p class="text-slate-600">Client-Server, MVC, Microservices</p>
+                        </div>
+                         <div>
+                            <h3 class="font-bold mb-2 flex items-center"><i class="fas fa-users mr-2 text-teal-500"></i><span data-lang-vi="Kỹ năng mềm" data-lang-en="Soft Skills">Kỹ năng mềm</span></h3>
+                            <p class="text-slate-600" data-lang-vi="Giải quyết vấn đề, Làm việc nhóm, Nghiên cứu & Phát triển" data-lang-en="Problem-solving, Teamwork, Research & Development">Giải quyết vấn đề, Làm việc nhóm, Nghiên cứu & Phát triển</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" id="projects" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="section-title"><i class="fas fa-tasks"></i><span data-lang-vi="Dự án nổi bật" data-lang-en="Featured Projects">Dự án nổi bật</span></h2>
+                    <div class="space-y-8">
+                        <!-- Project 1: Asset Management -->
+                        <div class="project-item">
+                            <h3 class="font-bold text-xl mb-2" data-lang-vi="Nền tảng Quản lý Tài sản Doanh nghiệp" data-lang-en="Enterprise Asset Management Platform">Nền tảng Quản lý Tài sản Doanh nghiệp</h3>
+                            <p class="text-sm text-slate-500 mb-3">02/2025 - 05/2025 | <span data-lang-vi="Vai trò: Lập trình viên" data-lang-en="Role: Developer">Vai trò: Lập trình viên</span></p>
+                            <div class="mb-3">
+                                <span class="tech-badge">ASP.NET Core</span><span class="tech-badge">Telerik UI</span><span class="tech-badge">SQL Server</span><span class="tech-badge">MVC</span>
+                            </div>
+                            <p class="text-slate-600 mb-2"><strong data-lang-vi="Tính năng nổi bật:" data-lang-en="Key Features:">Tính năng nổi bật:</strong> <span data-lang-vi="Theo dõi tài sản, quản lý bảo trì, kiểm kê tài sản, lập lịch bảo trì tự động." data-lang-en="Asset tracking, maintenance management, asset auditing, automated maintenance scheduling.">Theo dõi tài sản, quản lý bảo trì, kiểm kê tài sản, lập lịch bảo trì tự động.</span></p>
+                            <p class="text-slate-600"><strong data-lang-vi="Kết quả:" data-lang-en="Results:">Kết quả:</strong> <span data-lang-vi="Cải thiện độ chính xác theo dõi tài sản lên 98%, giảm 15% thời gian chết của thiết bị nhờ bảo trì dự đoán, và hợp lý hóa việc kiểm kê, tiết kiệm khoảng 20 giờ công mỗi tháng." data-lang-en="Improved asset tracking accuracy by 98%, reduced equipment downtime by 15% through predictive maintenance, and streamlined inventory audits, saving approximately 20 man-hours per month.">Cải thiện độ chính xác theo dõi tài sản lên 98%, giảm 15% thời gian chết của thiết bị nhờ bảo trì dự đoán, và hợp lý hóa việc kiểm kê, tiết kiệm khoảng 20 giờ công mỗi tháng.</span></p>
+                            <a href="https://github.com/devnguyen1910/assets-management" class="text-sky-600 hover:underline text-sm font-semibold mt-2 inline-block">View on Github <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                        <!-- Project 2: E-commerce Microservice -->
+                        <div class="project-item">
+                            <h3 class="font-bold text-xl mb-2" data-lang-vi="Hệ thống E-commerce với Kiến trúc Microservices" data-lang-en="E-commerce System with Microservices">Hệ thống E-commerce với Kiến trúc Microservices</h3>
+                             <p class="text-sm text-slate-500 mb-3">10/2024 - 01/2025 | <span data-lang-vi="Vai trò: Lập trình viên" data-lang-en="Role: Developer">Vai trò: Lập trình viên</span></p>
+                             <div class="mb-3">
+                                <span class="tech-badge">ASP.NET Core</span><span class="tech-badge">Docker</span><span class="tech-badge">Microservices</span><span class="tech-badge">CI/CD</span>
+                            </div>
+                            <p class="text-slate-600 mb-2"><strong data-lang-vi="Tính năng nổi bật:" data-lang-en="Key Features:">Tính năng nổi bật:</strong> <span data-lang-vi="Các dịch vụ được tách biệt cho Định danh, Danh mục Sản phẩm, và Đặt hàng, giao tiếp qua API Gateway. Triển khai kiến trúc có khả năng phục hồi lỗi bằng Docker container và quy trình CI/CD." data-lang-en="Decoupled services for Identity, Product Catalog, and Ordering, communicating via an API Gateway. Implemented a resilient architecture using Docker containers and a CI/CD pipeline.">Các dịch vụ được tách biệt cho Định danh, Danh mục Sản phẩm, và Đặt hàng, giao tiếp qua API Gateway. Triển khai kiến trúc có khả năng phục hồi lỗi bằng Docker container và quy trình CI/CD.</span></p>
+                            <p class="text-slate-600"><strong data-lang-vi="Kết quả:" data-lang-en="Results:">Kết quả:</strong> <span data-lang-vi="Kiến trúc một hệ thống có khả năng mở rộng và bảo trì cao, cho phép triển khai các tính năng độc lập và cập nhật không gián đoạn, đặt nền móng cho việc mở rộng trong tương lai." data-lang-en="Architected a highly scalable and maintainable system, allowing for independent deployment of features and zero-downtime updates, laying the foundation for future expansion.">Kiến trúc một hệ thống có khả năng mở rộng và bảo trì cao, cho phép triển khai các tính năng độc lập và cập nhật không gián đoạn, đặt nền móng cho việc mở rộng trong tương lai.</span></p>
+                            <a href="https://github.com/devnguyen1910/microservices" class="text-sky-600 hover:underline text-sm font-semibold mt-2 inline-block">View on Github <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                        <!-- Project 3: Modern E-commerce -->
+                        <div class="project-item">
+                            <h3 class="font-bold text-xl mb-2" data-lang-vi="Nền tảng Thương mại Điện tử Hiện đại" data-lang-en="Modern E-commerce Platform">Nền tảng Thương mại Điện tử Hiện đại</h3>
+                             <p class="text-sm text-slate-500 mb-3">06/2024 - 09/2024 | <span data-lang-vi="Vai trò: Lập trình viên" data-lang-en="Role: Developer">Vai trò: Lập trình viên</span></p>
+                             <div class="mb-3">
+                                <span class="tech-badge">ASP.NET Core</span><span class="tech-badge">ReactJS</span><span class="tech-badge">Material UI</span><span class="tech-badge">Azure Cloud</span>
+                            </div>
+                            <p class="text-slate-600 mb-2"><strong data-lang-vi="Tính năng nổi bật:" data-lang-en="Key Features:">Tính năng nổi bật:</strong> <span data-lang-vi="Danh mục sản phẩm với tìm kiếm & lọc nâng cao, xác thực người dùng an toàn, giỏ hàng tích hợp cổng thanh toán (Momo/VNPay), và quản lý đơn hàng." data-lang-en="Product catalog with advanced search & filtering, secure user authentication, shopping cart with payment gateway integration (Momo/VNPay), and order management.">Danh mục sản phẩm với tìm kiếm & lọc nâng cao, xác thực người dùng an toàn, giỏ hàng tích hợp cổng thanh toán (Momo/VNPay), và quản lý đơn hàng.</span></p>
+                            <p class="text-slate-600"><strong data-lang-vi="Kết quả:" data-lang-en="Results:">Kết quả:</strong> <span data-lang-vi="Xây dựng nền tảng đầy đủ tính năng, có khả năng xử lý nhiều người dùng đồng thời. Quy trình thanh toán được tối ưu hóa đã giảm 10% tỷ lệ bỏ giỏ hàng trong thử nghiệm, tăng tỷ lệ chuyển đổi bán hàng tiềm năng lên 25%." data-lang-en="Built a full-featured platform capable of handling concurrent users. The streamlined checkout process reduced cart abandonment rates by 10% in testing, boosting potential sales conversion by 25%.">Xây dựng nền tảng đầy đủ tính năng, có khả năng xử lý nhiều người dùng đồng thời. Quy trình thanh toán được tối ưu hóa đã giảm 10% tỷ lệ bỏ giỏ hàng trong thử nghiệm, tăng tỷ lệ chuyển đổi bán hàng tiềm năng lên 25%.</span></p>
+                            <a href="https://github.com/devnguyen1910/strategy-commercial" class="text-sky-600 hover:underline text-sm font-semibold mt-2 inline-block">View on Github <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                        <!-- Project 4: Furniture Management -->
+                        <div class="project-item">
+                            <h3 class="font-bold text-xl mb-2" data-lang-vi="Ứng dụng Quản lý Kinh doanh Nội thất" data-lang-en="Furniture Business Management App">Ứng dụng Quản lý Kinh doanh Nội thất</h3>
+                             <p class="text-sm text-slate-500 mb-3">02/2024 - 04/2024 | <span data-lang-vi="Vai trò: Lập trình viên" data-lang-en="Role: Developer">Vai trò: Lập trình viên</span></p>
+                             <div class="mb-3">
+                                <span class="tech-badge">Winform</span><span class="tech-badge">Dev Express</span><span class="tech-badge">SQL Server</span>
+                            </div>
+                            <p class="text-slate-600 mb-2"><strong data-lang-vi="Tính năng nổi bật:" data-lang-en="Key Features:">Tính năng nổi bật:</strong> <span data-lang-vi="Ứng dụng desktop quản lý tồn kho, đơn hàng, dữ liệu khách hàng và thông tin nhà cung cấp. Bao gồm module báo cáo để tạo tóm tắt doanh thu hàng ngày/tháng." data-lang-en="A desktop application for managing inventory, sales orders, customer data, and supplier information. Included a reporting module to generate daily/monthly sales summaries.">Ứng dụng desktop quản lý tồn kho, đơn hàng, dữ liệu khách hàng và thông tin nhà cung cấp. Bao gồm module báo cáo để tạo tóm tắt doanh thu hàng ngày/tháng.</span></p>
+                            <p class="text-slate-600"><strong data-lang-vi="Kết quả:" data-lang-en="Results:">Kết quả:</strong> <span data-lang-vi="Tập trung hóa việc quản lý dữ liệu, giảm 30% lỗi nhập liệu thủ công và cải thiện 20% tốc độ xử lý đơn hàng." data-lang-en="Centralized data management, reducing manual data entry errors by 30% and improving order processing speed by 20%.">Tập trung hóa việc quản lý dữ liệu, giảm 30% lỗi nhập liệu thủ công và cải thiện 20% tốc độ xử lý đơn hàng.</span></p>
+                            <a href="https://github.com/ginhenrick/Winform_DNC1921_QLBH" class="text-sky-600 hover:underline text-sm font-semibold mt-2 inline-block">View on Github <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-            
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t border-slate-200">
+            <p class="text-slate-500">&copy; 2025 Nguyen Minh Tuong. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50 hidden opacity-0 modal">
+        <div id="contact-modal-content" class="bg-white rounded-xl shadow-2xl w-full max-w-md transform scale-95 modal-content p-8 text-center relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl">&times;</button>
+            <h2 class="text-2xl font-bold mb-6" data-lang-vi="Liên hệ với tôi" data-lang-en="Contact Me">Liên hệ với tôi</h2>
+            <div class="flex justify-around items-center">
+                <a href="https://m.me/gin19th10" target="_blank" class="text-center text-slate-600 hover:text-sky-600 transition-colors">
+                    <i class="fab fa-facebook-messenger text-5xl" style="color: #00B2FF;"></i>
+                    <p class="mt-2 font-semibold">Messenger</p>
+                    <p class="text-sm">Tuong Nguyen</p>
+                </a>
+                <div class="text-center text-slate-600">
+                     <i class="fas fa-mobile-alt text-5xl" style="color: #0068FF;"></i>
+                     <p class="mt-2 font-semibold">Zalo</p>
+                     <p class="text-sm">(+84) 329 407 627</p>
+                </div>
+                 <div class="text-center text-slate-600">
+                     <i class="fab fa-whatsapp text-5xl" style="color: #25D366;"></i>
+                     <p class="mt-2 font-semibold">WhatsApp</p>
+                     <p class="text-sm">(+84) 329 407 627</p>
+                </div>
+            </div>
         </div>
+    </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
 
+        const langSwitcher = document.getElementById('lang-switcher');
+        const profileName = document.getElementById('profile-name');
+        let currentLang = 'vi'; // Default language
 
-    
+        const names = {
+            vi: 'Nguyễn Minh Tường',
+            en: 'Nguyen Minh Tuong'
+        };
 
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-lang-vi]').forEach(el => {
+                const text = el.getAttribute(`data-lang-${lang}`);
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+            profileName.textContent = names[lang];
+            document.documentElement.lang = lang;
+            currentLang = lang;
+        }
+
+        langSwitcher.addEventListener('click', () => {
+            const newLang = currentLang === 'vi' ? 'en' : 'vi';
+            switchLanguage(newLang);
+        });
+
+        // Contact Modal Logic
+        const contactModal = document.getElementById('contact-modal');
+        const contactModalContent = document.getElementById('contact-modal-content');
+        const closeModalBtn = document.getElementById('close-modal');
+        const contactBtnHeader = document.getElementById('contact-btn-header');
+        const contactBtnProfile = document.getElementById('contact-btn-profile');
+
+        function openModal() {
+            contactModal.classList.remove('hidden');
+            setTimeout(() => {
+                contactModal.classList.remove('opacity-0');
+                contactModalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            contactModal.classList.add('opacity-0');
+            contactModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                contactModal.classList.add('hidden');
+            }, 300);
+        }
+
+        contactBtnHeader.addEventListener('click', openModal);
+        contactBtnProfile.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeModal();
+            }
+        });
+
+        // Init
+        switchLanguage(currentLang);
+    });
+</script>
 </body>
 </html>
